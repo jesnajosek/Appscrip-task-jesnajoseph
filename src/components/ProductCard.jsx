@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-export default ProductCard = ({product}) => {
+const ProductCard = ({product}) => {
 
     return (
         <div className='product-card'>
@@ -9,10 +9,12 @@ export default ProductCard = ({product}) => {
                 <h3 className='product-card-name'>{product.name}</h3>
                 <p className='product-card-price'>${product.price}</p>
                 <div className='product-card-actions'>
-                    <Link className='btn btn-secondary'>View Details</Link>
+                    <Link to={`/products/${product.id}`} className='btn btn-secondary'>View Details</Link>
                     <button className='btn btn-primary'>Add to Cart</button>
                 </div>
             </div>
         </div>
     )
 }
+
+export default ProductCard;

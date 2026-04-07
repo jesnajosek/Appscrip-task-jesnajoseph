@@ -1,6 +1,9 @@
 import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { CartContext } from '../context/CartContext';
 
 const ProductCard = ({product}) => {
+    const { addToCart } = useContext(CartContext);
 
     return (
         <div className='product-card'>
@@ -10,7 +13,10 @@ const ProductCard = ({product}) => {
                 <p className='product-card-price'>${product.price}</p>
                 <div className='product-card-actions'>
                     <Link to={`/products/${product.id}`} className='btn btn-secondary'>View Details</Link>
-                    <button className='btn btn-primary'>Add to Cart</button>
+                    <button className='btn btn-primary' onClick={() => {
+                        addToCart(product);
+                        alert("Added to cart!");
+                    }}>Add to Cart</button>
                 </div>
             </div>
         </div>
